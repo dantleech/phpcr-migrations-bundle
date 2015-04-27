@@ -15,6 +15,9 @@ phpcr_migrations:
     path: %kernel.root_dir%/phpcr-migrations
 ````
 
+Or the bundle will automatically pick up any migrations in the
+`Resources/phpcr-migrations` folder in any bundles registered in the kernel.
+
 Creating migrations
 -------------------
 
