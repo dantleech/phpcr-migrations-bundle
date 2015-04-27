@@ -1,0 +1,4 @@
+phpcr_migrations:
+    version_node_name: "jcr:migrations"
+    paths:
+        - "%kernel.root_dir%/migrations"

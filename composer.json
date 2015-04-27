@@ -1,0 +1,26 @@
+{
+    "name": "dantleech/phpcr-migrations-bundle",
+    "description": "PHPCR migrations bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Leech",
+            "email": "daniel@dantleech.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "dantleech/phpcr-migrations": "dev-master",
+        "phpcr/phpcr-implementation": "~2.1",
+        "doctrine/phpcr-bundle": "~1.2"
+    },
+    "require-dev": {
+        "symfony/symfony": "~2.4",
+        "symfony-cmf/testing": "~1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "DTL\\Bundle\\PhpcrMigrations\\": "."
+        }
+    }
+}
