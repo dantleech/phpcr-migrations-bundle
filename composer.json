@@ -22,5 +22,10 @@
         "psr-4": {
             "DTL\\Bundle\\PhpcrMigrations\\": "."
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
     }
 }
