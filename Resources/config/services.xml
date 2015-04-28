@@ -27,6 +27,7 @@
 
         <service id="phpcr_migrations.command.migrate" class="DTL\Bundle\PhpcrMigrations\Command\MigrateCommand">
             <argument type="service" id="phpcr_migrations.migrator_factory" />
+            <argument type="service" id="service_container" />
             <tag name="console.command" />
         </service>
 

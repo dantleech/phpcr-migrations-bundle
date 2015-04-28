@@ -20,17 +20,22 @@ use Symfony\Component\Console\Input\InputArgument;
 use DTL\PhpcrMigrations\Migrator;
 use PHPCR\SessionInterface;
 use DTL\PhpcrMigrations\MigratorFactory;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class MigrateCommand extends Command
 {
     private $factory;
+    private $container;
 
     public function __construct(
-        MigratorFactory $factory
+        MigratorFactory $factory,
+        ContainerInterface $container
     )
     {
         parent::__construct();
         $this->factory = $factory;
+        $this->container = $container;
     }
 
     public function configure()
@@ -43,6 +48,14 @@ class MigrateCommand extends Command
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $to = $input->getArgument('to');
-        $this->factory->getMigrator()->migrate($to, $output);
+        $migrator = $this->factory->getMigrator();
+
+        foreach ($migrator->getVersions() as $version) {
+            if ($version instanceof ContainerAwareInterface) {
+                $version->setContainer($this->container);
+            }
+        }
+
+        $migrator->migrate($to, $output);
     }
 }
