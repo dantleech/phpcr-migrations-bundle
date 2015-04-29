@@ -1,8 +1,9 @@
 <?php
+
 /*
- * This file is part of the <package> package.
+ * This file is part of the PHPCR Migrations package
  *
- * (c) 2011-2015 Daniel Leech 
+ * (c) Daniel Leech <daniel@dantleech.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -10,8 +11,8 @@
 
 namespace DTL\Bundle\PhpcrMigrations\Tests\Functional;
 
-use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Cmf\Component\Testing\Functional\BaseTestCase as CmfBaseTestCase;
+use Symfony\Component\Console\Tester\CommandTester;
 
 abstract class BaseTestCase extends CmfBaseTestCase
 {
@@ -35,4 +36,3 @@ abstract class BaseTestCase extends CmfBaseTestCase
         return $tester;
     }
 }
-

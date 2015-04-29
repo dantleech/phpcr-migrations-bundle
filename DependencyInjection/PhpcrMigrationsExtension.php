@@ -1,8 +1,9 @@
 <?php
+
 /*
- * This file is part of the <package> package.
+ * This file is part of the PHPCR Migrations package
  *
- * (c) 2011-2015 Daniel Leech 
+ * (c) Daniel Leech <daniel@dantleech.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -10,10 +11,10 @@
 
 namespace DTL\Bundle\PhpcrMigrations\DependencyInjection;
 
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class PhpcrMigrationsExtension extends Extension
 {

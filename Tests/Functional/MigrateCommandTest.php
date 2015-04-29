@@ -1,8 +1,9 @@
 <?php
+
 /*
- * This file is part of the <package> package.
+ * This file is part of the PHPCR Migrations package
  *
- * (c) 2011-2015 Daniel Leech 
+ * (c) Daniel Leech <daniel@dantleech.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -10,13 +11,10 @@
 
 namespace DTL\Bundle\PhpcrMigrations\Tests\Functional;
 
-use Symfony\Component\Console\Tester\CommandTester;
-use DTL\Bundle\PhpcrMigrations\Tests\Functional\BaseTestCase;
-
 class MigrateCommandTest extends BaseTestCase
 {
     /**
-     * It should migrate all the unexecuted migrators
+     * It should migrate all the unexecuted migrators.
      */
     public function testMigrateToLatest()
     {
@@ -27,7 +25,7 @@ class MigrateCommandTest extends BaseTestCase
     }
 
     /**
-     * It should upgrade to a given version
+     * It should upgrade to a given version.
      */
     public function testUpgradeTo()
     {
@@ -41,7 +39,7 @@ class MigrateCommandTest extends BaseTestCase
     }
 
     /**
-     * It should downgrade to a given version
+     * It should downgrade to a given version.
      */
     public function testUpgradeRevertTo()
     {
