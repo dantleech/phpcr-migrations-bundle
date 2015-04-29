@@ -27,6 +27,9 @@ class MigrateCommand extends Command
 {
     private $factory;
     private $container;
+    private $actions = array(
+        'up', 'down', 'top', 'bottom',
+    );
 
     public function __construct(
         MigratorFactory $factory,
@@ -41,8 +44,35 @@ class MigrateCommand extends Command
     public function configure()
     {
         $this->setName('phpcr:migrations:migrate');
-        $this->addArgument('to', InputArgument::OPTIONAL, 'Migrate to this version');
+        $this->addArgument('to', InputArgument::OPTIONAL, sprintf(
+            'Version name to migrate to, or an action: "<comment>%s</comment>"',
+            implode('</comment>", "<comment>', $this->actions)
+        ));
         $this->setDescription('Migrate the content repository between versions');
+        $this->setHelp(<<<EOT
+Migrate to a specific version or perform an action.
+
+By default it will migrate to the latest version:
+
+    $ %command.full_name%
+
+You can migrate to a specific version (either in the "past" or "future"):
+
+    $ %command.full_name% 201504011200
+
+Or specify an action
+
+    $ %command.full_name% <action>
+
+Action can be one of:
+
+- <comment>up</comment>: Migrate one version up
+- <comment>down</comment>: Migrate one version down
+- <comment>top</comment>: Migrate to the latest version
+- <comment>bottom</comment>: Revert all migrations
+
+EOT
+        );
     }
 
     public function execute(InputInterface $input, OutputInterface $output)

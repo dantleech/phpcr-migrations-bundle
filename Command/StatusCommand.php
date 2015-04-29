@@ -36,6 +36,16 @@ class StatusCommand extends Command
     {
         $this->setName('phpcr:migrations:status');
         $this->setDescription('Show the current migration status');
+        $this->setHelp(<<<EOT
+Display a table which displays all available migrations and whether they have been migrated or not:
+
+- <info>Version</info>: Name of the migration version
+- <info>Date</info>: Date that the migration was <comment>created</comment>
+- <info>Migrated</info>: Date that the migration was <comment>executed</comment> or <comment>n/a</comment>
+- <info>Path</info>: Path to the migration file
+
+EOT
+        );
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
@@ -55,7 +65,7 @@ class StatusCommand extends Command
                 $versionName == $currentVersion ? '*' : '',
                 $versionName,
                 $this->getDate($versionName),
-                in_array($versionName, $executedVersions) ? '<info>YES</info>' : '<comment>NO</comment>',
+                isset($executedVersions[$versionName]) ? '<info>' . $executedVersions[$versionName]['executed']->format('Y-m-d H:i:s')  . '</info>' : 'n/a',
                 substr($reflection->getFileName(), strlen(getcwd()) + 1),
             ));
         }
@@ -71,7 +81,7 @@ class StatusCommand extends Command
 
     private function getDate($versionName)
     {
-        return date('Y-m-d H:i', strtotime(substr($versionName, 1)));
+        return date('Y-m-d H:i', strtotime($versionName));
     }
 }
 
