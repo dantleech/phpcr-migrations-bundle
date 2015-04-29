@@ -10,7 +10,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "dantleech/phpcr-migrations": "dev-master",
+        "phpcr/phpcr-migrations": "~0.1",
         "phpcr/phpcr-implementation": "~2.1",
         "doctrine/phpcr-bundle": "~1.2"
     },

@@ -4,16 +4,16 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="phpcr_migrations.version_storage" class="DTL\PhpcrMigrations\VersionStorage" public="false">
+        <service id="phpcr_migrations.version_storage" class="PHPCR\Migrations\VersionStorage" public="false">
             <argument type="service" id="doctrine_phpcr.default_session" />
             <argument>%phpcr_migrations.version_node_name%</argument>
         </service>
 
-        <service id="phpcr_migrations.version_finder" class="DTL\PhpcrMigrations\VersionFinder" public="false">
+        <service id="phpcr_migrations.version_finder" class="PHPCR\Migrations\VersionFinder" public="false">
             <argument>%phpcr_migrations.paths%</argument>
         </service>
 
-        <service id="phpcr_migrations.migrator_factory" class="DTL\PhpcrMigrations\MigratorFactory">
+        <service id="phpcr_migrations.migrator_factory" class="PHPCR\Migrations\MigratorFactory">
             <argument type="service" id="phpcr_migrations.version_storage" />
             <argument type="service" id="phpcr_migrations.version_finder" />
             <argument type="service" id="doctrine_phpcr.default_session" />
@@ -36,7 +36,7 @@
             <tag name="console.command" />
         </service>
 
-        <service id="phpcr_migrations.migrator_factory" class="DTL\PhpcrMigrations\MigratorFactory">
+        <service id="phpcr_migrations.migrator_factory" class="PHPCR\Migrations\MigratorFactory">
             <argument type="service" id="phpcr_migrations.version_storage" />
             <argument type="service" id="phpcr_migrations.version_finder" />
             <argument type="service" id="doctrine_phpcr.default_session" />

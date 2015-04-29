@@ -11,8 +11,8 @@
 
 namespace DTL\Bundle\PhpcrMigrations\Command;
 
-use DTL\PhpcrMigrations\VersionFinder;
-use DTL\PhpcrMigrations\VersionStorage;
+use PHPCR\Migrations\VersionFinder;
+use PHPCR\Migrations\VersionStorage;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;

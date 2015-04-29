@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use DTL\PhpcrMigrations\VersionInterface;
+use PHPCR\Migrations\VersionInterface;
 use PHPCR\SessionInterface;
 
 class Version201501011215 implements VersionInterface

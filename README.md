@@ -28,7 +28,7 @@ First create two new migration files:
 // app/phpcr-migrations/Version201501011200.php
 
 use PHPCR\SessionInterface;
-use DTL\PhpcrMigrations\VersionInterface;
+use PHPCR\Migrations\VersionInterface;
 
 class Version201501011200 implements VersionInterface
 {
@@ -51,7 +51,7 @@ and
 // app/phpcr-migrations/Version201501011212.php
 
 use PHPCR\SessionInterface;
-use DTL\PhpcrMigrations\VersionInterface;
+use PHPCR\Migrations\VersionInterface;
 
 class Version201501011212 implements VersionInterface
 {

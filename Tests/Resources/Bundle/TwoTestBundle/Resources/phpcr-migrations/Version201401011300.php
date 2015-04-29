@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use DTL\PhpcrMigrations\VersionInterface;
+use PHPCR\Migrations\VersionInterface;
 use PHPCR\SessionInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
