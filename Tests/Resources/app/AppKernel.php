@@ -14,6 +14,7 @@ use DTL\Bundle\PhpcrMigrations\Tests\Resources\Bundle\OneTestBundle\OneTestBundl
 use DTL\Bundle\PhpcrMigrations\Tests\Resources\Bundle\TwoTestBundle\TwoTestBundle;
 use Symfony\Cmf\Component\Testing\HttpKernel\TestKernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class AppKernel extends TestKernel
 {
@@ -36,5 +37,11 @@ class AppKernel extends TestKernel
         $loader->import(CMF_TEST_CONFIG_DIR . '/default.php');
         $loader->import(CMF_TEST_CONFIG_DIR . '/phpcr_odm.php');
         $loader->load(__DIR__ . '/config/config.yml');
+    }
+
+    protected function prepareContainer(ContainerBuilder $container)
+    {
+        parent::prepareContainer($container);
+        $container->setParameter('cmf_testing.bundle_fqn', 'DTL\Bundle\PhpcrMigrations\PhpcrMigrationsBundle');
     }
 }
