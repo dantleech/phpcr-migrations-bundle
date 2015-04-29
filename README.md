@@ -111,3 +111,22 @@ $ php app/console phpcr:migrations:migrate 201501011200
 Reverting 1 version(s):
  - [1/4]: V201501011212
 ````
+
+Actions
+-------
+
+In addition to specifying versions you can specify actions:
+
+````bash
+$ php app/console phpcr:migrations:migrate up
+Upgrading 1 version(s):
+ - [1/4]: V201501011212
+````
+
+Actions are:
+
+- `up`: Upgrade one version
+- `down`: Revert one version
+- `top`: Migrate to the latest version
+- `bottom`: Revert all migrations
+
