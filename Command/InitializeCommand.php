@@ -11,21 +11,13 @@
 
 namespace DTL\Bundle\PhpcrMigrations\Command;
 
-use PHPCR\Migrations\MigratorFactory;
-use Symfony\Component\Console\Command\Command;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class InitializeCommand extends Command
+class InitializeCommand extends ContainerAwareCommand
 {
     private $factory;
-
-    public function __construct(
-        MigratorFactory $factory
-    ) {
-        parent::__construct();
-        $this->factory = $factory;
-    }
 
     public function configure()
     {
@@ -42,6 +34,7 @@ EOT
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->factory = $this->getContainer()->get('phpcr_migrations.migrator_factory');
         $this->factory->getMigrator()->initialize();
     }
 }

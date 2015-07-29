@@ -11,30 +11,19 @@
 
 namespace DTL\Bundle\PhpcrMigrations\Command;
 
-use PHPCR\Migrations\MigratorFactory;
-use Symfony\Component\Console\Command\Command;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class MigrateCommand extends Command
+class MigrateCommand extends ContainerAwareCommand
 {
     private $factory;
-    private $container;
     private $actions = array(
         'up', 'down', 'top', 'bottom',
     );
-
-    public function __construct(
-        MigratorFactory $factory,
-        ContainerInterface $container
-    ) {
-        parent::__construct();
-        $this->factory = $factory;
-        $this->container = $container;
-    }
 
     public function configure()
     {
@@ -72,12 +61,14 @@ EOT
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->factory = $this->getContainer()->get('phpcr_migrations.migrator_factory');
+
         $to = $input->getArgument('to');
         $migrator = $this->factory->getMigrator();
 
         foreach ($migrator->getVersions() as $version) {
             if ($version instanceof ContainerAwareInterface) {
-                $version->setContainer($this->container);
+                $version->setContainer($this->getContainer());
             }
         }
 
