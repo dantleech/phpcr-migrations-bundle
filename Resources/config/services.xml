@@ -19,12 +19,6 @@
             <argument type="service" id="doctrine_phpcr.default_session" />
         </service>
 
-        <service id="phpcr_migrations.command.migrate" class="DTL\Bundle\PhpcrMigrations\Command\MigrateCommand">
-            <argument type="service" id="phpcr_migrations.migrator_factory" />
-            <argument type="service" id="service_container" />
-            <tag name="console.command" />
-        </service>
-
         <service id="phpcr_migrations.migrator_factory" class="PHPCR\Migrations\MigratorFactory">
             <argument type="service" id="phpcr_migrations.version_storage" />
             <argument type="service" id="phpcr_migrations.version_finder" />
