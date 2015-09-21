@@ -4,12 +4,12 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="phpcr_migrations.version_storage" class="PHPCR\Migrations\VersionStorage" public="false">
+        <service id="phpcr_migrations.version_storage" class="PHPCR\Migrations\VersionStorage">
             <argument type="service" id="doctrine_phpcr.default_session" />
             <argument>%phpcr_migrations.version_node_name%</argument>
         </service>
 
-        <service id="phpcr_migrations.version_finder" class="PHPCR\Migrations\VersionFinder" public="false">
+        <service id="phpcr_migrations.version_finder" class="PHPCR\Migrations\VersionFinder">
             <argument>%phpcr_migrations.paths%</argument>
         </service>
 
@@ -17,23 +17,6 @@
             <argument type="service" id="phpcr_migrations.version_storage" />
             <argument type="service" id="phpcr_migrations.version_finder" />
             <argument type="service" id="doctrine_phpcr.default_session" />
-        </service>
-
-        <service id="phpcr_migrations.command.status" class="DTL\Bundle\PhpcrMigrations\Command\StatusCommand">
-            <argument type="service" id="phpcr_migrations.version_storage" />
-            <argument type="service" id="phpcr_migrations.version_finder" />
-            <tag name="console.command" />
-        </service>
-
-        <service id="phpcr_migrations.command.migrate" class="DTL\Bundle\PhpcrMigrations\Command\MigrateCommand">
-            <argument type="service" id="phpcr_migrations.migrator_factory" />
-            <argument type="service" id="service_container" />
-            <tag name="console.command" />
-        </service>
-
-        <service id="phpcr_migrations.command.initialize" class="DTL\Bundle\PhpcrMigrations\Command\InitializeCommand">
-            <argument type="service" id="phpcr_migrations.migrator_factory" />
-            <tag name="console.command" />
         </service>
 
         <service id="phpcr_migrations.migrator_factory" class="PHPCR\Migrations\MigratorFactory">
