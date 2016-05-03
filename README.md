@@ -12,7 +12,7 @@ Configure the path to your migrations:
 ````yaml
 # app/config.yml
 phpcr_migrations:
-    path: %kernel.root_dir%/phpcr-migrations
+    paths: [%kernel.root_dir%/phpcr-migrations]
 ````
 
 Or the bundle will automatically pick up any migrations in the
