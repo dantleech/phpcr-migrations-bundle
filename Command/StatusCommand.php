@@ -11,16 +11,26 @@
 
 namespace DTL\Bundle\PhpcrMigrations\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Helper\TableHelper;
+use PHPCR\Migrations\VersionFinder;
+use PHPCR\Migrations\VersionStorage;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class StatusCommand extends ContainerAwareCommand
+class StatusCommand extends Command
 {
     private $versionStorage;
     private $finder;
 
+    public function __construct(
+        VersionStorage $versionStorage,
+        VersionFinder $finder
+    ) {
+        parent::__construct();
+        $this->versionStorage = $versionStorage;
+        $this->finder = $finder;
+    }
 
     public function configure()
     {
@@ -40,14 +50,11 @@ EOT
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->versionStorage = $this->getContainer()->get('phpcr_migrations.version_storage');
-        $this->finder = $this->getContainer()->get('phpcr_migrations.version_finder');
-
         $versionCollection = $this->finder->getCollection();
         $executedVersions = (array) $this->versionStorage->getPersistedVersions();
         $currentVersion = $this->versionStorage->getCurrentVersion();
 
-        $table = new TableHelper();
+        $table = new Table($output);
         $table->setHeaders(array(
             '', 'Version', 'Date', 'Migrated', 'Path',
         ));
@@ -63,7 +70,7 @@ EOT
             ));
         }
 
-        $table->render($output);
+        $table->render();
 
         if ($currentVersion) {
             $output->writeln(sprintf('<info>Current:</info> %s (%s)', $currentVersion, $this->getDate($currentVersion)));
