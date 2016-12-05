@@ -16,7 +16,7 @@
         <service id="phpcr_migrations.migrator_factory" class="PHPCR\Migrations\MigratorFactory">
             <argument type="service" id="phpcr_migrations.version_storage" />
             <argument type="service" id="phpcr_migrations.version_finder" />
-            <argument type="service" id="doctrine_phpcr.default_session" />
+            <argument type="service" id="doctrine_phpcr.session" />
         </service>
 
         <service id="phpcr_migrations.command.status" class="DTL\Bundle\PhpcrMigrations\Command\StatusCommand">
@@ -34,12 +34,6 @@
         <service id="phpcr_migrations.command.initialize" class="DTL\Bundle\PhpcrMigrations\Command\InitializeCommand">
             <argument type="service" id="phpcr_migrations.migrator_factory" />
             <tag name="console.command" />
-        </service>
-
-        <service id="phpcr_migrations.migrator_factory" class="PHPCR\Migrations\MigratorFactory">
-            <argument type="service" id="phpcr_migrations.version_storage" />
-            <argument type="service" id="phpcr_migrations.version_finder" />
-            <argument type="service" id="doctrine_phpcr.default_session" />
         </service>
     </services>
 </container>
