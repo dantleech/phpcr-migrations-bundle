@@ -11,7 +11,7 @@
     "require": {
         "phpcr/phpcr-migrations": "~0.1",
         "phpcr/phpcr-implementation": "~2.1",
-        "doctrine/phpcr-bundle": "~1.0"
+        "doctrine/phpcr-bundle": "~1.2"
     },
     "require-dev": {
         "symfony/symfony": "~2.4 || ~3.0",

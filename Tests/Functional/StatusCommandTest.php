@@ -18,7 +18,7 @@ class StatusCommandTest extends BaseTestCase
      */
     public function testShowAll()
     {
-        $tester = $this->executeCommand($this->getStatusCommand(), array());
+        $tester = $this->executeCommand('phpcr_migrations.command.status', array());
         $display = $tester->getDisplay();
 
         $this->assertContains('No migrations have been executed', $display);
@@ -29,8 +29,8 @@ class StatusCommandTest extends BaseTestCase
      */
     public function testShowCurrentVersion()
     {
-        $tester = $this->executeCommand($this->getMigrateCommand(), array('to' => '201501011500'));
-        $tester = $this->executeCommand($this->getStatusCommand(), array());
+        $tester = $this->executeCommand('phpcr_migrations.command.migrate', array('to' => '201501011500'));
+        $tester = $this->executeCommand('phpcr_migrations.command.status', array());
         $display = $tester->getDisplay();
 
         $this->assertContains('201501011500', $display);

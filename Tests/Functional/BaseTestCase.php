@@ -11,8 +11,6 @@
 
 namespace DTL\Bundle\PhpcrMigrations\Tests\Functional;
 
-use DTL\Bundle\PhpcrMigrations\Command\MigrateCommand;
-use DTL\Bundle\PhpcrMigrations\Command\StatusCommand;
 use Symfony\Cmf\Component\Testing\Functional\BaseTestCase as CmfBaseTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -29,22 +27,12 @@ abstract class BaseTestCase extends CmfBaseTestCase
         }
     }
 
-    protected function executeCommand($command, $arguments)
+    protected function executeCommand($serviceId, $arguments)
     {
-        $command->setContainer($this->getContainer());
+        $command = $this->getContainer()->get($serviceId);
         $tester = new CommandTester($command);
         $tester->execute($arguments);
 
         return $tester;
-    }
-
-    protected function getMigrateCommand()
-    {
-        return new MigrateCommand();
-    }
-
-    protected function getStatusCommand()
-    {
-        return new StatusCommand();
     }
 }
