@@ -8,7 +8,6 @@
             "email": "daniel@dantleech.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "phpcr/phpcr-migrations": "~0.1",
         "phpcr/phpcr-implementation": "~2.1",
