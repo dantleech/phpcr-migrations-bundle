@@ -14,7 +14,7 @@
         "doctrine/phpcr-bundle": "~1.2"
     },
     "require-dev": {
-        "symfony/symfony": "~2.4 || ~3.0",
+        "symfony/symfony": "~2.3 || ~3.0",
         "symfony-cmf/testing": "~1.2"
     },
     "autoload": {
