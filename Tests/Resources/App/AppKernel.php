@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+namespace DTL\Bundle\PhpcrMigrations\Tests\Resources\App;
+
 use DTL\Bundle\PhpcrMigrations\PhpcrMigrationsBundle;
 use DTL\Bundle\PhpcrMigrations\Tests\Resources\Bundle\OneTestBundle\OneTestBundle;
 use DTL\Bundle\PhpcrMigrations\Tests\Resources\Bundle\TwoTestBundle\TwoTestBundle;

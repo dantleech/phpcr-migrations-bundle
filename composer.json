@@ -11,12 +11,15 @@
     "require": {
         "phpcr/phpcr-migrations": "^1.1",
         "phpcr/phpcr-implementation": "^2.1",
-        "doctrine/phpcr-bundle": "^1.3"
+        "doctrine/phpcr-bundle": "^1.3 || ^2.0"
     },
     "require-dev": {
         "symfony/symfony": "~2.8 || ~3.4 || ~4.0",
-        "symfony-cmf/testing": "~2.0",
+        "symfony-cmf/testing": "~2.1",
         "phpunit/phpunit": "~5.7"
+    },
+    "conflict": {
+        "symfony/symfony": "3.4.15"
     },
     "autoload": {
         "psr-4": {
