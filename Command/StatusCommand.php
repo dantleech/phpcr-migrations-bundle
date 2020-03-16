@@ -77,6 +77,8 @@ EOT
         } else {
             $output->writeln('<info>No migrations have been executed</info>');
         }
+
+        return 0;
     }
 
     private function getDate($versionName)

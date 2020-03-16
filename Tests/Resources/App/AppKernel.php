@@ -46,4 +46,12 @@ class AppKernel extends TestKernel
         parent::prepareContainer($container);
         $container->setParameter('cmf_testing.bundle_fqn', 'DTL\Bundle\PhpcrMigrations\PhpcrMigrationsBundle');
     }
+
+    protected function getKernelParameters()
+    {
+        $kernelParameters = parent::getKernelParameters();
+        $kernelParameters['kernel.root_dir'] = $this->getKernelDir();
+
+        return $kernelParameters;
+    }
 }

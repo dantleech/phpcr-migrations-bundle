@@ -21,7 +21,7 @@ class StatusCommandTest extends BaseTestCase
         $tester = $this->executeCommand('phpcr_migrations.command.status', array());
         $display = $tester->getDisplay();
 
-        $this->assertContains('No migrations have been executed', $display);
+        $this->assertStringContainsString('No migrations have been executed', $display);
     }
 
     /**
@@ -33,6 +33,6 @@ class StatusCommandTest extends BaseTestCase
         $tester = $this->executeCommand('phpcr_migrations.command.status', array());
         $display = $tester->getDisplay();
 
-        $this->assertContains('201501011500', $display);
+        $this->assertStringContainsString('201501011500', $display);
     }
 }
