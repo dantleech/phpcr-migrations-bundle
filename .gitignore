@@ -2,3 +2,6 @@ Tests/Resources/app/cache
 Tests/Resources/app/logs
 composer.lock
 vendor
+.phpunit.result.cache
+Tests/Resources/App/var/cache
+Tests/Resources/App/var/logs

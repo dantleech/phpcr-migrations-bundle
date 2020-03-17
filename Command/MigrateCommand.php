@@ -82,5 +82,7 @@ EOT
         }
 
         $migrator->migrate($to, $output);
+
+        return 0;
     }
 }

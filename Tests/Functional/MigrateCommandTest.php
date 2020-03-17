@@ -32,7 +32,7 @@ class MigrateCommandTest extends BaseTestCase
         $tester = $this->executeCommand('phpcr_migrations.command.migrate', array('to' => '201401011300'));
         $display = $tester->getDisplay();
 
-        $this->assertContains('Upgrading 1 version', $display);
+        $this->assertStringContainsString('Upgrading 1 version', $display);
 
         $versionNodes = $this->session->getNode('/jcr:migrations')->getNodes();
         $this->assertCount(1, $versionNodes);
@@ -47,7 +47,7 @@ class MigrateCommandTest extends BaseTestCase
         $tester = $this->executeCommand('phpcr_migrations.command.migrate', array('to' => '201501011200'));
         $display = $tester->getDisplay();
 
-        $this->assertContains('Reverting 3 version', $display);
+        $this->assertStringContainsString('Reverting 3 version', $display);
 
         $versionNodes = $this->session->getNode('/jcr:migrations')->getNodes();
         $this->assertCount(2, $versionNodes);

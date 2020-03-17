@@ -43,5 +43,7 @@ EOT
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $this->factory->getMigrator()->initialize();
+
+        return 0;
     }
 }

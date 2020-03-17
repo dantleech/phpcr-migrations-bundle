@@ -23,8 +23,15 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('phpcr_migrations')
+        $treeBuilder = new TreeBuilder('phpcr_migrations');
+        if (method_exists($treeBuilder, 'getRootNode')) {
+            $root = $treeBuilder->getRootNode();
+        } else {
+            // BC layer for symfony/config 4.1 and older
+            $root = $treeBuilder->root('phpcr_migrations');
+        }
+
+        $root
             ->children()
                 ->scalarNode('version_node_name')->defaultValue('jcr:versions')->end()
                 ->arrayNode('paths')
