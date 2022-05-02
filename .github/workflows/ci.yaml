@@ -1,0 +1,68 @@
+name: CI
+
+on:
+    pull_request:
+    push:
+        branches:
+            - 'master'
+
+jobs:
+    php:
+        name: "PHP ${{ matrix.php-version }}"
+        runs-on: ubuntu-latest
+
+        env:
+            KERNEL_CLASS: DTL\Bundle\PhpcrMigrations\Tests\Resources\App\AppKernel
+
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    - php-version: '7.2'
+                      symfony-version: '^4.4'
+                      monolog-version: '^1.0'
+
+                    - php-version: '7.3'
+                      symfony-version: '^5.4'
+                      monolog-version: '^1.0'
+
+                    - php-version: '7.4'
+                      symfony-version: '^5.4'
+                      monolog-version: '^2.0'
+
+                    - php-version: '8.0'
+                      symfony-version: '6.0.*'
+                      monolog-version: '^2.0'
+
+                    - php-version: '8.1'
+                      symfony-version: '^6.0'
+                      monolog-version: '^2.0'
+
+        steps:
+            - name: Checkout project
+              uses: actions/checkout@v2
+
+            - name: Install and configure PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php-version }}
+                  extensions: ctype, iconv, mysql
+                  tools: composer:v2
+                  ini-values: memory_limit=-1
+                  coverage: none
+
+            - name: Add additional packages
+              run: |
+                  composer require monolog/monolog:${{ matrix.monolog-version }} --no-update
+                  composer require symfony/symfony:${{ matrix.symfony-version }} --no-update
+
+            - name: Install composer dependencies
+              uses: ramsey/composer-install@v1
+              with:
+                  dependency-versions: ${{matrix.dependency-versions}}
+
+            - name: Prepare phpcr odm doctrine dbal
+              run: vendor/symfony-cmf/testing/bin/travis/phpcr_odm_doctrine_dbal.sh
+
+            - name: Run tests
+              run: vendor/bin/simple-phpunit
