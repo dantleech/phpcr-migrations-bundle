@@ -8,51 +8,47 @@ on:
 
 jobs:
     php:
-        name: "PHP ${{ matrix.php-version }} (${{ matrix.database }}, ${{ matrix.phpcr-transport }}, ${{ matrix.dependency-versions }})"
+        name: "PHP ${{ matrix.php-version }}"
         runs-on: ubuntu-latest
 
         env:
-            KERNEL_CLASS: DTL\\Bundle\\PhpcrMigrations\\Tests\\Resources\\App\\AppKernel
+            KERNEL_CLASS: DTL\Bundle\PhpcrMigrations\Tests\Resources\App\AppKernel
 
-    strategy:
-        fail-fast: false
-        matrix:
-            include:
-                - php-version: '5.6'
-                  symfony-version: '2.8.*'
-                  monolog-version: '^1.0'
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    - php-version: '5.6'
+                      symfony-version: '2.8.*'
+                      monolog-version: '^1.0'
 
-                - php-version: '5.6'
-                  symfony-version: '3.4.*'
-                  monolog-version: '^1.0'
+                    - php-version: '7.0'
+                      symfony-version: '3.4.*'
+                      monolog-version: '^1.0'
 
-                - php-version: '7.0'
-                  symfony-version: '3.4.*'
-                  monolog-version: '^1.0'
+                    - php-version: '7.1'
+                      symfony-version: '4.0.*'
+                      monolog-version: '^1.0'
 
-                - php-version: '7.1'
-                  symfony-version: '4.0.*'
-                  monolog-version: '^1.0'
+                    - php-version: '7.2'
+                      symfony-version: '4.1.*'
+                      monolog-version: '^1.0'
 
-                - php-version: '7.2'
-                  symfony-version: '4.1.*'
-                  monolog-version: '^1.0'
+                    - php-version: '7.3'
+                      symfony-version: '4.4.*'
+                      monolog-version: '^1.0'
 
-                - php-version: '7.3'
-                  symfony-version: '4.4.*'
-                  monolog-version: '^1.0'
+                    - php-version: '7.4'
+                      symfony-version: '5.0.*'
+                      monolog-version: '^2.0'
 
-                - php-version: '7.4'
-                  symfony-version: '5.0.*'
-                  monolog-version: '^2.0'
+                    - php-version: '8.0'
+                      symfony-version: '6.0.*'
+                      monolog-version: '^2.0'
 
-                - php-version: '8.0'
-                  symfony-version: '6.0.*'
-                  monolog-version: '^2.0'
-
-                - php-version: '8.1'
-                  symfony-version: '^6.0'
-                  monolog-version: '^2.0'
+                    - php-version: '8.1'
+                      symfony-version: '^6.0'
+                      monolog-version: '^2.0'
 
         steps:
             - name: Checkout project
@@ -78,7 +74,7 @@ jobs:
                   dependency-versions: ${{matrix.dependency-versions}}
 
             - name: Prepare phpcr odm doctrine dbal
-              run: vendor/symfony-cmf/testing/bin/travis/phpcr_odm_doctrine_dbal
+              run: vendor/symfony-cmf/testing/bin/travis/phpcr_odm_doctrine_dbal.sh
 
             - name: Run tests
               run: vendor/bin/simple-phpunit
