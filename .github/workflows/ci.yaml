@@ -13,6 +13,7 @@ jobs:
 
         env:
             KERNEL_CLASS: DTL\Bundle\PhpcrMigrations\Tests\Resources\App\AppKernel
+            COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
         strategy:
             fail-fast: false
