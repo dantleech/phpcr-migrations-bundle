@@ -8,12 +8,6 @@
             "email": "daniel@dantleech.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:alexander-schranz/Testing.git"
-        }
-    ],
     "require": {
         "php": "^7.2 || ^8.0",
         "phpcr/phpcr-migrations": "^1.1",
@@ -30,7 +24,7 @@
         "symfony/symfony": "^4.4 || ^5.4 || ^6.0",
         "symfony/monolog-bundle": "^2.0 || ^3.0",
         "symfony/phpunit-bridge": "^5.4 || ^6.0",
-        "symfony-cmf/testing": "dev-patch-1 as 4.5.0"
+        "symfony-cmf/testing": "dev-master as 4.5.0"
     },
     "conflict": {
         "symfony/symfony": "3.4.15"
