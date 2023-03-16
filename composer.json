@@ -21,9 +21,9 @@
     "require-dev": {
         "doctrine/doctrine-bundle": "^1.8 || ^2.0",
         "doctrine/phpcr-odm": "^1.4",
-        "jackalope/jackalope": "^1.0 || ^2.0@dev",
-        "jackalope/jackalope-doctrine-dbal": "^1.0 || ^2.0@dev",
-        "jackalope/jackalope-jackrabbit": "^1.0 || ^2.0@dev",
+        "jackalope/jackalope": "^1.0",
+        "jackalope/jackalope-doctrine-dbal": "^1.0",
+        "jackalope/jackalope-jackrabbit": "^1.0",
         "symfony/symfony": "^4.4 || ^5.4 || ^6.0",
         "symfony/monolog-bundle": "^2.0 || ^3.0",
         "symfony/phpunit-bridge": "^5.4 || ^6.0",
