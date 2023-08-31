@@ -32,6 +32,12 @@
     "autoload": {
         "psr-4": {
             "DTL\\Bundle\\PhpcrMigrations\\": "."
+        },
+        "exclude-from-classmap": ["/Tests/"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DTL\\Bundle\\PhpcrMigrations\\Tests\\": "Tests/"
         }
     },
     "extra": {
