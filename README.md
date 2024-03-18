@@ -4,6 +4,15 @@ PHPCR Migrations Bundle
 This library provides a Symfony integration for the [PHPCR migrations
 library](https://github.com/dantleech/phpcr-migrations).
 
+This version has been archived
+==============================
+
+This bundle has been renamed to [phpcr/phpcr-migrations-bundle](https://github.com/phpcr/phpcr-migrations-bundle).
+We recommend to update your dependencies to get the latest version.
+
+`dantleech/phpcr-migrations-bundle` will remain available to not break existing installations, but
+is no longer maintained.
+
 Configuration
 -------------
 
@@ -129,4 +138,3 @@ Actions are:
 - `down`: Revert one version
 - `top`: Migrate to the latest version
 - `bottom`: Revert all migrations
-
